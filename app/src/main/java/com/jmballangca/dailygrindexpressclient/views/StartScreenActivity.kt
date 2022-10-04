@@ -1,14 +1,16 @@
 package com.jmballangca.dailygrindexpressclient.views
 
-import android.content.Intent
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.jmballangca.dailygrindexpressclient.R
 import com.jmballangca.dailygrindexpressclient.databinding.ActivityStartScreenBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class StartScreenActivity : AppCompatActivity() {
     private lateinit var binding : ActivityStartScreenBinding
     private lateinit var navController: NavController

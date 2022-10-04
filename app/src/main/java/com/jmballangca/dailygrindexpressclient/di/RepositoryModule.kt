@@ -1,8 +1,8 @@
 package com.jmballangca.dailygrindexpressclient.di
 
-import com.jmballangca.dailygrindexpressclient.repository.OtpRepository
-import com.jmballangca.dailygrindexpressclient.repository.OtpRepositoryImpl
-import com.jmballangca.dailygrindexpressclient.service.OtpService
+import com.jmballangca.dailygrindexpressclient.repository.AuthRepository
+import com.jmballangca.dailygrindexpressclient.repository.AuthRepositoryImpl
+import com.jmballangca.dailygrindexpressclient.service.AuthService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,7 +16,7 @@ object RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideOtpRepository() : OtpRepository {
-        return OtpRepositoryImpl(ApiInstance.api.create(OtpService::class.java))
+    fun provideOtpRepository() : AuthRepository {
+        return AuthRepositoryImpl(ApiInstance.api.create(AuthService::class.java))
     }
 }

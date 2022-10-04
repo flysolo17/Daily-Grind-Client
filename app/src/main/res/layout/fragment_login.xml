@@ -8,7 +8,7 @@
     android:gravity="center"
     android:background="#FAFAFA"
     android:padding="10dp"
-    tools:context=".views.LoginFragment">
+    tools:context=".views.registration.LoginFragment">
 
     <TextView
         android:layout_width="wrap_content"

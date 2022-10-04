@@ -30,10 +30,15 @@
         <action
             android:id="@+id/action_signUpFragment_to_verificationFragment"
             app:destination="@id/verificationFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/verificationFragment"
         android:name="com.jmballangca.dailygrindexpressclient.views.registration.VerificationFragment"
         android:label="fragment_verification"
-        tools:layout="@layout/fragment_verification" />
+        tools:layout="@layout/fragment_verification" >
+        <argument
+            android:name="phone"
+            app:argType="string" />
+    </fragment>
 </navigation>

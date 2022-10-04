@@ -5,13 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jmballangca.dailygrindexpressclient.data.CheckPhoneNumberResponse
-import com.jmballangca.dailygrindexpressclient.repository.OtpRepository
+import com.jmballangca.dailygrindexpressclient.repository.AuthRepository
 import com.jmballangca.dailygrindexpressclient.utils.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 @HiltViewModel
-class OtpViewModel @Inject constructor(private val otpRepository: OtpRepository) : ViewModel() {
+class AuthViewModel @Inject constructor(private val authRepository: AuthRepository) : ViewModel() {
     private var phoneNumber = MutableLiveData<UiState<CheckPhoneNumberResponse>>()
     val number: LiveData<UiState<CheckPhoneNumberResponse>>
         get() = phoneNumber
@@ -19,7 +19,7 @@ class OtpViewModel @Inject constructor(private val otpRepository: OtpRepository)
      fun checkPhoneNumber(number : String) {
          viewModelScope.launch {
              UiState.Loading
-             otpRepository.checkPhoneNumber(number) {
+             authRepository.checkPhoneNumber(number) {
                  phoneNumber.value = it
              }
          }
