@@ -61,16 +61,22 @@
                 android:textSize="16sp"
                 android:fontFamily="@font/poppins"
                 android:text="Didn't get the code? " />
-            <TextView
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonResend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:fontFamily="@font/poppins"
-                android:text="Resend" />
+                android:text="Resend"
+                android:textAllCaps="false"
+                android:textColor="#6E111D"
+                style="@style/Widget.MaterialComponents.Button.TextButton"/>
 
         </LinearLayout>
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonVerify"
             android:layout_width="wrap_content"
+            android:enabled="false"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginEnd="40dp"
@@ -78,7 +84,9 @@
             app:iconGravity="textEnd"
             android:backgroundTint="#6E111D"
             app:cornerRadius="20dp"
+
             app:iconPadding="10dp"
             app:iconSize="18sp"/>
+
     </LinearLayout>
 </FrameLayout>

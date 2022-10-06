@@ -1,4 +1,4 @@
-package com.jmballangca.dailygrindexpressclient.data
+package com.jmballangca.dailygrindexpressclient.data.response
 
 data class CheckPhoneNumberResponse(
     val otp : String,

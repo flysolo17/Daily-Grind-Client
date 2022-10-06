@@ -1,16 +1,17 @@
 package com.jmballangca.dailygrindexpressclient.views.registration
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.text.Editable
-import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.jmballangca.dailygrindexpressclient.R
 import com.jmballangca.dailygrindexpressclient.databinding.FragmentVerificationBinding
 import com.jmballangca.dailygrindexpressclient.utils.UiState
 import com.jmballangca.dailygrindexpressclient.viewmodels.AuthViewModel
@@ -38,11 +39,10 @@ class VerificationFragment : Fragment() {
         binding.textPhone.text = args.phone
         authViewModel.checkPhoneNumber(args.phone)
 
-
         authViewModel.number.observe(viewLifecycleOwner) { state ->
             when(state) {
                 is UiState.Loading -> {
-                    Toast.makeText(view.context,"Loading", Toast.LENGTH_LONG).show()
+                    verificationCodeCountDown()
                 }
                 is UiState.Failure -> {
                     Toast.makeText(view.context,state.message, Toast.LENGTH_LONG).show()
@@ -52,6 +52,53 @@ class VerificationFragment : Fragment() {
                 }
             }
         }
+
+        authViewModel.verify.observe(viewLifecycleOwner) {state ->
+            when (state) {
+                is UiState.Loading -> {
+                    binding.buttonVerify.isEnabled = false
+                }
+                is UiState.Failure -> {
+                    binding.buttonVerify.isEnabled = true
+                    Toast.makeText(view.context,state.message,Toast.LENGTH_LONG).show()
+                }
+
+                is UiState.Success -> {
+                    val otp : String = binding.inputOtp.text.toString()
+                    val action = VerificationFragmentDirections.actionVerificationFragmentToAccountInfoFragment(args.phone,otp)
+                    findNavController().navigate(action)
+                    binding.buttonVerify.isEnabled = true
+                }
+            }
+        }
+
+        binding.inputOtp.addTextChangedListener { text: Editable? ->
+            if (text.toString().length == 6) {
+                binding.buttonVerify.isEnabled = true
+            }
+        }
+
+        binding.buttonVerify.setOnClickListener {
+            authViewModel.checkOtp(binding.inputOtp.text.toString())
+        }
+
+        binding.buttonResend.setOnClickListener {
+            authViewModel.checkPhoneNumber(args.phone)
+        }
     }
 
+    //Verification Countdown. (60 seconds)
+    private fun verificationCodeCountDown() {
+        object : CountDownTimer(60000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                binding.buttonResend.text = "" + millisUntilFinished / 1000
+                binding.buttonResend.isEnabled = false
+            }
+
+            override fun onFinish() {
+                binding.buttonResend.text = "Resend"
+                binding.buttonResend.isEnabled = true
+            }
+        }.start()
+    }
 }

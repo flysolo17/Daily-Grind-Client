@@ -4,7 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jmballangca.dailygrindexpressclient.data.CheckPhoneNumberResponse
+import com.jmballangca.dailygrindexpressclient.data.response.CheckOtpResponse
+import com.jmballangca.dailygrindexpressclient.data.response.CheckPhoneNumberResponse
+import com.jmballangca.dailygrindexpressclient.data.request.CustomerRegistrationRequest
+import com.jmballangca.dailygrindexpressclient.data.response.CustomerRegistrationResponse
 import com.jmballangca.dailygrindexpressclient.repository.AuthRepository
 import com.jmballangca.dailygrindexpressclient.utils.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,16 +15,39 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 @HiltViewModel
 class AuthViewModel @Inject constructor(private val authRepository: AuthRepository) : ViewModel() {
-    private var phoneNumber = MutableLiveData<UiState<CheckPhoneNumberResponse>>()
+    private var phoneNumber = MutableLiveData<UiState<CheckPhoneNumberResponse>>() //get otp
     val number: LiveData<UiState<CheckPhoneNumberResponse>>
         get() = phoneNumber
 
+    private var verifyOtp = MutableLiveData<UiState<CheckOtpResponse>>() //otp verification
+    val verify: LiveData<UiState<CheckOtpResponse>>
+        get() = verifyOtp
+
+    private var customerRegistration = MutableLiveData<UiState<CustomerRegistrationResponse>>() //registration
+    val registration: LiveData<UiState<CustomerRegistrationResponse>>
+        get() = customerRegistration
+
+
+
      fun checkPhoneNumber(number : String) {
          viewModelScope.launch {
-             UiState.Loading
              authRepository.checkPhoneNumber(number) {
                  phoneNumber.value = it
              }
          }
+    }
+    fun checkOtp(otp : String) {
+        viewModelScope.launch{
+            authRepository.checkOtp(otp) {
+                verifyOtp.value = it
+            }
+        }
+    }
+    fun register(customerRegistrationRequest: CustomerRegistrationRequest) {
+        viewModelScope.launch {
+            authRepository.customerRegistration(customerRegistrationRequest) {
+                customerRegistration.value = it
+            }
+        }
     }
 }

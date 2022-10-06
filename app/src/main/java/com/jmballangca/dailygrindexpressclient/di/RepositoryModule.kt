@@ -13,10 +13,10 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 object RepositoryModule {
-
     @Singleton
     @Provides
     fun provideOtpRepository() : AuthRepository {
         return AuthRepositoryImpl(ApiInstance.api.create(AuthService::class.java))
     }
+
 }
