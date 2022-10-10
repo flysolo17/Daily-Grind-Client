@@ -4,13 +4,15 @@ import com.jmballangca.dailygrindexpressclient.data.response.CheckOtpResponse
 import com.jmballangca.dailygrindexpressclient.data.response.CheckPhoneNumberResponse
 import com.jmballangca.dailygrindexpressclient.data.request.CustomerRegistrationRequest
 import com.jmballangca.dailygrindexpressclient.data.response.CustomerRegistrationResponse
+import com.jmballangca.dailygrindexpressclient.data.response.LoginResponse
 import com.jmballangca.dailygrindexpressclient.service.AuthService
-import com.jmballangca.dailygrindexpressclient.utils.Constants
+import com.jmballangca.dailygrindexpressclient.utils.CREATED
+import com.jmballangca.dailygrindexpressclient.utils.OK
+
 import com.jmballangca.dailygrindexpressclient.utils.UiState
-import retrofit2.Call
-import retrofit2.Callback
+
 import retrofit2.HttpException
-import retrofit2.Response
+
 import java.io.IOException
 
 class AuthRepositoryImpl(private val authService: AuthService) : AuthRepository {
@@ -57,7 +59,7 @@ class AuthRepositoryImpl(private val authService: AuthService) : AuthRepository 
         result.invoke(UiState.Loading)
         try {
             val response = authService.customerRegistration(customerRegistrationRequest)
-            if (response.isSuccessful && response.code() == 201) {
+            if (response.code() == CREATED) {
                 result.invoke(UiState.Success(response.body()!!))
             } else {
                 result.invoke(UiState.Failure(message = "${response.code()} ${response.body()}"))
@@ -66,6 +68,30 @@ class AuthRepositoryImpl(private val authService: AuthService) : AuthRepository 
             e.printStackTrace()
             result.invoke(UiState.Failure(message = e.message!!))
         } catch (e: HttpException) {
+            e.printStackTrace()
+            result.invoke(UiState.Failure(message = e.message()))
+        }
+    }
+
+
+    override suspend fun login(
+        phone: String,
+        password: String,
+        result: (UiState<LoginResponse>) -> Unit
+    ) {
+        result.invoke(UiState.Loading)
+        try {
+            val response = authService.login(phone,password)
+            if (response.isSuccessful && response.code() == OK) {
+                result.invoke(UiState.Success(response.body()!!))
+            } else {
+                result.invoke(UiState.Failure(message = "${response.code()} ${response.body()}"))
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+            result.invoke(UiState.Failure(message = e.message!!))
+        } catch (e: HttpException) {
+            e.printStackTrace()
             result.invoke(UiState.Failure(message = e.message()))
         }
     }

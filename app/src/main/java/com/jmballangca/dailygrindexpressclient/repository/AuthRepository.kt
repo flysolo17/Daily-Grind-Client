@@ -4,6 +4,7 @@ import com.jmballangca.dailygrindexpressclient.data.response.CheckOtpResponse
 import com.jmballangca.dailygrindexpressclient.data.response.CheckPhoneNumberResponse
 import com.jmballangca.dailygrindexpressclient.data.request.CustomerRegistrationRequest
 import com.jmballangca.dailygrindexpressclient.data.response.CustomerRegistrationResponse
+import com.jmballangca.dailygrindexpressclient.data.response.LoginResponse
 import com.jmballangca.dailygrindexpressclient.utils.UiState
 
 interface AuthRepository {
@@ -13,4 +14,5 @@ interface AuthRepository {
 
     suspend fun customerRegistration(customerRegistrationRequest: CustomerRegistrationRequest,result: (UiState<CustomerRegistrationResponse>) -> Unit)
 
+    suspend fun login(phone : String, password : String, result: (UiState<LoginResponse>) -> Unit)
 }

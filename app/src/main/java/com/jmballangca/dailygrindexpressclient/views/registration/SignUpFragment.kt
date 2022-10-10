@@ -27,12 +27,11 @@ class SignUpFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonSignUp.setOnClickListener {
             val phone = binding.inputPhone.text.toString()
-            if (phone.isNotEmpty() && phone.startsWith("09") && phone.length == 11) {
-                val action = SignUpFragmentDirections.actionSignUpFragmentToVerificationFragment(phone)
-                findNavController().navigate(action)
-            } else {
-                Toast.makeText(view.context,"Invalid phone number!",Toast.LENGTH_SHORT).show()
+            if (!validatePhoneNumber(binding.inputPhone)) {
+                return@setOnClickListener
             }
+            val action = SignUpFragmentDirections.actionSignUpFragmentToVerificationFragment(phone)
+            findNavController().navigate(action)
         }
 
     }

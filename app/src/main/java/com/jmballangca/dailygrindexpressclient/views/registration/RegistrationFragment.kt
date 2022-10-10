@@ -28,9 +28,7 @@ class RegistrationFragment : Fragment() {
             findNavController().navigate(R.id.action_registrationFragment_to_signUpFragment)
         }
         binding.buttLogin.setOnClickListener {
-            val action = RegistrationFragmentDirections.actionRegistrationFragmentToAccountInfoFragment("nice","one")
-           /* findNavController().navigate(R.id.action_registrationFragment_to_loginFragment)*/
-            findNavController().navigate(action)
+            findNavController().navigate(R.id.action_registrationFragment_to_loginFragment)
         }
     }
 

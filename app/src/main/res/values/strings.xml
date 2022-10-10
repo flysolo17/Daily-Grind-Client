@@ -9,4 +9,9 @@
     <string name="terms_and_conditions">Terms and conditions</string>
     <string name="sign_up">Sign Up</string>
     <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="orders">Orders</string>
+    <string name="routes">Routes</string>
+    <string name="vouchers">Vouchers</string>
+    <string name="help_center">Help Center</string>
 </resources>
