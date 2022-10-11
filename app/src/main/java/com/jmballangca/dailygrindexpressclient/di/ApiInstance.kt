@@ -1,5 +1,10 @@
 package com.jmballangca.dailygrindexpressclient.di
 
+import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
+import com.jmballangca.dailygrindexpressclient.utils.PREFERENCE_KEY
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,6 +17,7 @@ import javax.inject.Singleton
 
 
 object ApiInstance {
+
     private const val BASE_URL = "https://staging.daily-grind.tatsing.com.ph/api/v1/"
     private val builder = OkHttpClient.Builder().build()
     val api: Retrofit by lazy {
@@ -21,5 +27,9 @@ object ApiInstance {
                 .client(builder)
             .build()
     }
+
+    val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = PREFERENCE_KEY)
+
+
 
 }

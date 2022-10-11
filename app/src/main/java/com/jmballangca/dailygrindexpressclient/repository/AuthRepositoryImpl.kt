@@ -1,21 +1,28 @@
 package com.jmballangca.dailygrindexpressclient.repository
 
+import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.preferencesDataStore
 import com.jmballangca.dailygrindexpressclient.data.response.CheckOtpResponse
 import com.jmballangca.dailygrindexpressclient.data.response.CheckPhoneNumberResponse
 import com.jmballangca.dailygrindexpressclient.data.request.CustomerRegistrationRequest
 import com.jmballangca.dailygrindexpressclient.data.response.CustomerRegistrationResponse
 import com.jmballangca.dailygrindexpressclient.data.response.LoginResponse
+import com.jmballangca.dailygrindexpressclient.di.ApiInstance.dataStore
 import com.jmballangca.dailygrindexpressclient.service.AuthService
-import com.jmballangca.dailygrindexpressclient.utils.CREATED
-import com.jmballangca.dailygrindexpressclient.utils.OK
-
-import com.jmballangca.dailygrindexpressclient.utils.UiState
+import com.jmballangca.dailygrindexpressclient.utils.*
+import kotlinx.coroutines.flow.first
 
 import retrofit2.HttpException
 
 import java.io.IOException
 
-class AuthRepositoryImpl(private val authService: AuthService) : AuthRepository {
+
+
+class AuthRepositoryImpl(private val authService: AuthService ,private val context: Context) : AuthRepository {
     override suspend fun checkPhoneNumber(
         phoneNumber: String,
         result: (UiState<CheckPhoneNumberResponse>) -> Unit
@@ -85,7 +92,7 @@ class AuthRepositoryImpl(private val authService: AuthService) : AuthRepository 
             if (response.isSuccessful && response.code() == OK) {
                 result.invoke(UiState.Success(response.body()!!))
             } else {
-                result.invoke(UiState.Failure(message = "${response.code()} ${response.body()}"))
+                result.invoke(UiState.Failure(message = "Invalid email or password"))
             }
         } catch (e: IOException) {
             e.printStackTrace()
@@ -93,6 +100,26 @@ class AuthRepositoryImpl(private val authService: AuthService) : AuthRepository 
         } catch (e: HttpException) {
             e.printStackTrace()
             result.invoke(UiState.Failure(message = e.message()))
+        }
+    }
+
+    override suspend fun setUser(token: String, tokenType: String) {
+       val key = stringPreferencesKey(name = TOKEN)
+        context.dataStore.edit { user ->
+            user[key] = "$tokenType $token"
+        }
+
+    }
+
+    override suspend fun getUser(): String? {
+        val key = stringPreferencesKey(name = TOKEN)
+        val token = context.dataStore.data.first()
+        return token[key]
+    }
+
+    override suspend fun logout() {
+        context.dataStore.edit { user ->
+            user.clear()
         }
     }
 

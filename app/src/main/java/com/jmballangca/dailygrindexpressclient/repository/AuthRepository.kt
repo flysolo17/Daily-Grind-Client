@@ -15,4 +15,9 @@ interface AuthRepository {
     suspend fun customerRegistration(customerRegistrationRequest: CustomerRegistrationRequest,result: (UiState<CustomerRegistrationResponse>) -> Unit)
 
     suspend fun login(phone : String, password : String, result: (UiState<LoginResponse>) -> Unit)
+
+    suspend fun setUser(token : String , tokenType : String)
+    suspend fun getUser() : String?
+
+    suspend fun logout()
 }

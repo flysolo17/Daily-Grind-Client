@@ -2,6 +2,8 @@ package com.jmballangca.dailygrindexpressclient.utils
 
 import java.util.regex.Pattern
 
+const val PREFERENCE_KEY = "user"
+const val TOKEN = "users_token"
 const val ROLE = "customer"
 const val CREATED = 201
 const val OK = 200

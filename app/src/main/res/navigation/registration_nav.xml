@@ -5,6 +5,7 @@
     android:id="@+id/registration_nav"
     app:startDestination="@id/registrationFragment">
 
+
     <fragment
         android:id="@+id/registrationFragment"
         android:name="com.jmballangca.dailygrindexpressclient.views.registration.RegistrationFragment"
@@ -21,11 +22,7 @@
         android:id="@+id/loginFragment"
         android:name="com.jmballangca.dailygrindexpressclient.views.registration.LoginFragment"
         android:label="Login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_loginFragment_to_mainActivity"
-            app:destination="@id/mainActivity" />
-    </fragment>
+        tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.jmballangca.dailygrindexpressclient.views.registration.SignUpFragment"
@@ -62,14 +59,6 @@
         <action
             android:id="@+id/action_accountInfoFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
-        <action
-            android:id="@+id/action_accountInfoFragment_to_mainActivity"
-            app:destination="@id/mainActivity" />
 
     </fragment>
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.jmballangca.dailygrindexpressclient.MainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
 </navigation>

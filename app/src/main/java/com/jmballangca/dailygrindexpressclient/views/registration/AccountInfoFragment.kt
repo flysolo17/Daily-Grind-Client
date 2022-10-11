@@ -1,5 +1,6 @@
 package com.jmballangca.dailygrindexpressclient.views.registration
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.jmballangca.dailygrindexpressclient.MainActivity
 import com.jmballangca.dailygrindexpressclient.R
 import com.jmballangca.dailygrindexpressclient.data.request.CustomerRegistrationRequest
 import com.jmballangca.dailygrindexpressclient.databinding.FragmentAccountInfoBinding
@@ -58,6 +60,7 @@ class AccountInfoFragment : Fragment() {
                 }
             }
         }
+
         authViewModel.login.observe(viewLifecycleOwner) { state ->
             when(state) {
                 is UiState.Loading -> {
@@ -68,8 +71,10 @@ class AccountInfoFragment : Fragment() {
                     Toast.makeText(view.context,state.message,5000).show()
                 }
                 is UiState.Success -> {
+                    authViewModel.saveUser(state.data.data.access_token,state.data.data.access_token_type)
                     progressDialog.stopLoading()
-                    findNavController().navigate(R.id.action_accountInfoFragment_to_mainActivity)
+                    startActivity(Intent(activity,MainActivity::class.java))
+
                 }
             }
         }

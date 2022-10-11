@@ -7,7 +7,6 @@ data class User(
     val full_name: String,
     val id: Int,
     val permission: List<String>,
-
     val phone_number: String,
     val phone_number_verified_at: String,
     val profile_photo: String,

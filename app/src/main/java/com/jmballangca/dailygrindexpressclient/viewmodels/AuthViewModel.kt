@@ -13,6 +13,7 @@ import com.jmballangca.dailygrindexpressclient.repository.AuthRepository
 import com.jmballangca.dailygrindexpressclient.utils.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 @HiltViewModel
 class AuthViewModel @Inject constructor(private val authRepository: AuthRepository) : ViewModel() {
@@ -60,6 +61,21 @@ class AuthViewModel @Inject constructor(private val authRepository: AuthReposito
             authRepository.login(phone,password) {
                 loginResponse.value = it
             }
+        }
+    }
+
+    fun saveUser(token : String ,tokenType : String) {
+        viewModelScope.launch {
+            authRepository.setUser(token, tokenType)
+        }
+    }
+
+    fun getCurrentUser(): String? = runBlocking {
+        authRepository.getUser()
+    }
+    fun logout() {
+        viewModelScope.launch {
+            authRepository.logout()
         }
     }
 }

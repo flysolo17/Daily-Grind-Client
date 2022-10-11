@@ -33,6 +33,7 @@
             android:paddingVertical="10dp"
             android:paddingLeft="20dp"
             android:inputType="phone"
+            android:maxLength="11"
             android:id="@+id/inputPhone"
             android:background="@drawable/ic_input_bg"
             android:drawableStart="@drawable/ic_user"/>
