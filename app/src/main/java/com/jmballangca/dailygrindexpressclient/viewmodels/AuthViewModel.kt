@@ -4,11 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jmballangca.dailygrindexpressclient.data.response.CheckOtpResponse
-import com.jmballangca.dailygrindexpressclient.data.response.CheckPhoneNumberResponse
 import com.jmballangca.dailygrindexpressclient.data.request.CustomerRegistrationRequest
-import com.jmballangca.dailygrindexpressclient.data.response.CustomerRegistrationResponse
-import com.jmballangca.dailygrindexpressclient.data.response.LoginResponse
+import com.jmballangca.dailygrindexpressclient.data.response.*
 import com.jmballangca.dailygrindexpressclient.repository.AuthRepository
 import com.jmballangca.dailygrindexpressclient.utils.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -33,8 +30,15 @@ class AuthViewModel @Inject constructor(private val authRepository: AuthReposito
     val login: LiveData<UiState<LoginResponse>>
         get() = loginResponse
 
+/*    private var user = MutableLiveData<User>()
+    fun setUser(user: User) {
+        this.user.value = user
+    }
+    fun getUser() : LiveData<User> {
+        return user
+    }*/
 
-     fun checkPhoneNumber(number : String) {
+    fun checkPhoneNumber(number : String) {
          viewModelScope.launch {
              authRepository.checkPhoneNumber(number) {
                  phoneNumber.value = it

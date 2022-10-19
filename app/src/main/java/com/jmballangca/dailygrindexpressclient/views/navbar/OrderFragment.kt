@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.jmballangca.dailygrindexpressclient.R
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
+import com.jmballangca.dailygrindexpressclient.adapter.TabAdapter
 import com.jmballangca.dailygrindexpressclient.databinding.FragmentOrderBinding
 import com.jmballangca.dailygrindexpressclient.viewmodels.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,27 +26,35 @@ class OrderFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = FragmentOrderBinding.inflate(inflater)
+        binding = FragmentOrderBinding.inflate(inflater,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.logout.setOnClickListener {
-            MaterialAlertDialogBuilder(view.context).setTitle("Logout")
-                .setMessage("Are you sure you want to logout?")
-                .setPositiveButton("Yes") { dialog, _ ->
-                    authViewModel.logout()
-                    activity?.finish()
-                    dialog.dismiss()
-                }
-                .setNegativeButton("No") { dialog, _ ->
-                    dialog.dismiss()
-                }
-                .show()
-        }
+        setupTabLayout()
 
     }
+    private fun setupTabLayout() {
+        val tabAdapter = TabAdapter(childFragmentManager,lifecycle)
+        binding.viewpager.adapter = tabAdapter
+        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                binding.viewpager.currentItem = tab.position
+            }
+            override fun onTabUnselected(tab: TabLayout.Tab) {}
+            override fun onTabReselected(tab: TabLayout.Tab) {}
+        })
+        binding.viewpager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                binding.tabLayout.getTabAt(position)!!.select()
+            }
+        })
+    }
+
+
+
 
 
 }

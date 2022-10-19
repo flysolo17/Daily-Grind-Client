@@ -22,5 +22,30 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header"
-        app:menu="@menu/menu_nav" />
+        app:menu="@menu/menu_nav">
+        <LinearLayout
+            android:id="@+id/buttonLogout"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#A1915F"
+            android:orientation="horizontal"
+            android:gravity="center"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_gravity="bottom">
+            <ImageButton
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:backgroundTint="@color/white"
+                android:layout_margin="10dp"
+                android:background="@drawable/ic_logout"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Log Out"
+                android:textColor="@color/white"
+                style="@style/TextAppearance.AppCompat.Headline"
+                />
+        </LinearLayout>
+
+    </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>

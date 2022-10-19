@@ -14,4 +14,7 @@
     <string name="routes">Routes</string>
     <string name="vouchers">Vouchers</string>
     <string name="help_center">Help Center</string>
+    <string name="order">Order</string>
+    <string name="completed">Completed</string>
+    <string name="active">Active</string>
 </resources>
