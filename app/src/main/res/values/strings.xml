@@ -17,4 +17,6 @@
     <string name="order">Order</string>
     <string name="completed">Completed</string>
     <string name="active">Active</string>
+    <string name="create_an_order_now">Create an order now</string>
+    <string name="create_order">Create Order</string>
 </resources>

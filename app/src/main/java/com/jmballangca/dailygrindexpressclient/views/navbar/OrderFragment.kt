@@ -7,10 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
-import com.jmballangca.dailygrindexpressclient.adapter.TabAdapter
+import com.jmballangca.dailygrindexpressclient.views.adapter.TabAdapter
 import com.jmballangca.dailygrindexpressclient.databinding.FragmentOrderBinding
 import com.jmballangca.dailygrindexpressclient.viewmodels.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,9 +40,15 @@ class OrderFragment : Fragment() {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 binding.viewpager.currentItem = tab.position
             }
-            override fun onTabUnselected(tab: TabLayout.Tab) {}
-            override fun onTabReselected(tab: TabLayout.Tab) {}
+            override fun onTabUnselected(tab: TabLayout.Tab) {
+
+            }
+            override fun onTabReselected(tab: TabLayout.Tab) {
+
+            }
         })
+
+
         binding.viewpager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)

@@ -1,14 +1,14 @@
-package com.jmballangca.dailygrindexpressclient.adapter
+package com.jmballangca.dailygrindexpressclient.views.adapter
 
 import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.jmballangca.dailygrindexpressclient.views.navbar.ActiveFragment
-import com.jmballangca.dailygrindexpressclient.views.navbar.CompletedFragment
-import com.jmballangca.dailygrindexpressclient.views.navbar.OrderFragment
+
+import com.jmballangca.dailygrindexpressclient.views.tabs.ActiveFragment
+import com.jmballangca.dailygrindexpressclient.views.tabs.CompletedFragment
+
 class TabAdapter(
     @NonNull fragmentManager: FragmentManager?,
     @NonNull lifecycle: Lifecycle?

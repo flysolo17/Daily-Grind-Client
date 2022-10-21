@@ -1,11 +1,8 @@
-package com.jmballangca.dailygrindexpressclient.repository
+package com.jmballangca.dailygrindexpressclient.repository.auth
 
 import android.content.Context
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
 import com.jmballangca.dailygrindexpressclient.data.response.CheckOtpResponse
 import com.jmballangca.dailygrindexpressclient.data.response.CheckPhoneNumberResponse
 import com.jmballangca.dailygrindexpressclient.data.request.CustomerRegistrationRequest
@@ -22,7 +19,8 @@ import java.io.IOException
 
 
 
-class AuthRepositoryImpl(private val authService: AuthService ,private val context: Context) : AuthRepository {
+class AuthRepositoryImpl(private val authService: AuthService ,private val context: Context) :
+    AuthRepository {
     override suspend fun checkPhoneNumber(
         phoneNumber: String,
         result: (UiState<CheckPhoneNumberResponse>) -> Unit
@@ -103,12 +101,11 @@ class AuthRepositoryImpl(private val authService: AuthService ,private val conte
         }
     }
 
-    override suspend fun setUser(token: String, tokenType: String) {
+    override suspend fun setUser(token: String) {
        val key = stringPreferencesKey(name = TOKEN)
         context.dataStore.edit { user ->
-            user[key] = "$tokenType $token"
+            user[key] = token
         }
-
     }
 
     override suspend fun getUser(): String? {

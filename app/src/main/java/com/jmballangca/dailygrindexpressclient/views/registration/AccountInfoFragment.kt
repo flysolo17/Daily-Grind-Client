@@ -71,10 +71,9 @@ class AccountInfoFragment : Fragment() {
                     Toast.makeText(view.context,state.message,5000).show()
                 }
                 is UiState.Success -> {
-                    authViewModel.saveUser(state.data.data.access_token,state.data.data.access_token_type)
+                    authViewModel.saveUser(state.data.data.access_token)
                     progressDialog.stopLoading()
                     startActivity(Intent(activity,MainActivity::class.java))
-
                 }
             }
         }
