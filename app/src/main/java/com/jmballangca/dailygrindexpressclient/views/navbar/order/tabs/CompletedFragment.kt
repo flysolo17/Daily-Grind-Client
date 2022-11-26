@@ -1,4 +1,4 @@
-package com.jmballangca.dailygrindexpressclient.views.tabs
+package com.jmballangca.dailygrindexpressclient.views.navbar.order.tabs
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

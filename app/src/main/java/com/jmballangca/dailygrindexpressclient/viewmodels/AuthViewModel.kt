@@ -6,7 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jmballangca.dailygrindexpressclient.data.request.CustomerRegistrationRequest
 import com.jmballangca.dailygrindexpressclient.data.response.*
+import com.jmballangca.dailygrindexpressclient.models.User
 import com.jmballangca.dailygrindexpressclient.repository.auth.AuthRepository
+import com.jmballangca.dailygrindexpressclient.utils.TOKEN
+import com.jmballangca.dailygrindexpressclient.utils.TOKEN_TYPE
 import com.jmballangca.dailygrindexpressclient.utils.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -17,6 +20,7 @@ class AuthViewModel @Inject constructor(private val authRepository: AuthReposito
     private var phoneNumber = MutableLiveData<UiState<CheckPhoneNumberResponse>>() //get otp
     val number: LiveData<UiState<CheckPhoneNumberResponse>>
         get() = phoneNumber
+
 
     private var verifyOtp = MutableLiveData<UiState<CheckOtpResponse>>() //otp verification
     val verify: LiveData<UiState<CheckOtpResponse>>
@@ -30,6 +34,10 @@ class AuthViewModel @Inject constructor(private val authRepository: AuthReposito
     val login: LiveData<UiState<LoginResponse>>
         get() = loginResponse
 
+    private var getProfileResponse = MutableLiveData<UiState<User>>() //Profile
+    val profile: LiveData<UiState<User>>
+        get() = getProfileResponse
+
     fun checkPhoneNumber(number : String) {
          viewModelScope.launch {
              authRepository.checkPhoneNumber(number) {
@@ -37,6 +45,7 @@ class AuthViewModel @Inject constructor(private val authRepository: AuthReposito
              }
          }
     }
+
     fun checkOtp(otp : String) {
         viewModelScope.launch{
             authRepository.checkOtp(otp) {
@@ -60,18 +69,28 @@ class AuthViewModel @Inject constructor(private val authRepository: AuthReposito
         }
     }
 
-    fun saveUser(token : String) {
+    fun saveUser(loginResponse: LoginResponse) {
         viewModelScope.launch {
-            authRepository.setUser(token)
+            authRepository.setUser(loginResponse)
         }
     }
 
-    fun getCurrentUser(): String? = runBlocking {
-        authRepository.getUser()
+    fun getCurrentUser(key : String): String? = runBlocking {
+        authRepository.getUser(key)
     }
+
     fun logout() {
         viewModelScope.launch {
             authRepository.logout()
+        }
+    }
+    fun getProfile() {
+        val token = getCurrentUser(TOKEN)
+        val token_type = getCurrentUser(TOKEN_TYPE)
+        viewModelScope.launch {
+            authRepository.userProfile("$token_type $token") {
+                getProfileResponse.value = it
+            }
         }
     }
 }

@@ -19,4 +19,16 @@
     <string name="active">Active</string>
     <string name="create_an_order_now">Create an order now</string>
     <string name="create_order">Create Order</string>
+    <string name="pick_up_person">Pick up person</string>
+    <string name="contact_number">Contact number</string>
+    <string name="comment">Comment</string>
+    <string name="_12_d_florencie_s1_caloocan_city">12 D Florencie S1. Caloocan City</string>
+    <string name="next">NEXT</string>
+    <string name="welcome">Welcome</string>
+    <string name="car">Car</string>
+    <string name="motorcycle">Motorcycle</string>
+    <string name="cash">Cash</string>
+    <string name="online_payment">Online Payment</string>
+    <string name="enter_voucher">Enter Voucher</string>
+    <string name="add">Add</string>
 </resources>

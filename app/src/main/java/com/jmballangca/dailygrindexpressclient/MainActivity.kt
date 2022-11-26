@@ -9,21 +9,21 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.core.view.get
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.Observer
+import androidx.annotation.ColorRes
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.Snackbar
-import com.jmballangca.dailygrindexpressclient.data.response.User
+import com.jmballangca.dailygrindexpressclient.models.User
 import com.jmballangca.dailygrindexpressclient.databinding.ActivityMainBinding
-import com.jmballangca.dailygrindexpressclient.databinding.NavHeaderBinding
+import com.jmballangca.dailygrindexpressclient.models.Profile
+import com.jmballangca.dailygrindexpressclient.utils.ProgressDialog
+import com.jmballangca.dailygrindexpressclient.utils.USER_FULLNAME
 import com.jmballangca.dailygrindexpressclient.utils.UiState
 import com.jmballangca.dailygrindexpressclient.viewmodels.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val progressDialog = ProgressDialog(this)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.appBarMain.toolbar)
@@ -48,14 +49,32 @@ class MainActivity : AppCompatActivity() {
         userProfile = header.findViewById(R.id.imageUserProfile)
         fullName = header.findViewById(R.id.textFullName)
         buttonClose = header.findViewById(R.id.buttonClose)
-
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.menu_order, R.id.menu_routes, R.id.menu_vouchers,R.id.menu_help_center
             ), binding.drawerLayout
         )
+        authViewModel.getProfile()
+        authViewModel.profile.observe(this) {
+            when(it){
+                is UiState.Failure -> {
+                    Toast.makeText(this,it.message,Toast.LENGTH_SHORT).show()
+                    progressDialog.stopLoading()
+                }
+                UiState.Loading -> {
+                    progressDialog.showLoadingDialog("Fetching profile....")
+                }
+                is UiState.Success -> {
+                    progressDialog.stopLoading()
+                    displayHeaderViews(it.data)
+                }
+            }
+        }
+
+
+
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.navView.setupWithNavController(navController)
         binding.buttonLogout.setOnClickListener {
@@ -65,19 +84,20 @@ class MainActivity : AppCompatActivity() {
             binding.drawerLayout.close()
         }
 
-
-
     }
-    private fun bindUserInfo(user: User) {
+    private fun displayHeaderViews(user: User) {
         fullName.text = user.full_name
+        Glide.with(this).load(user.profile_photo).into(userProfile)
+
     }
     private fun logout() {
         MaterialAlertDialogBuilder(binding.root.context).setTitle("Logout")
             .setMessage("Are you sure you want to logout?")
             .setPositiveButton("Yes") { dialog, _ ->
-                authViewModel.logout()
-                finish()
-                dialog.dismiss()
+                authViewModel.logout().also {
+                    dialog.dismiss()
+                    finish()
+                }
             }
             .setNegativeButton("No") { dialog, _ ->
                 dialog.dismiss()
@@ -90,9 +110,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
+
 
 }

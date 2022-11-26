@@ -11,16 +11,18 @@ import retrofit2.HttpException
 import java.io.IOException
 
 class OrderRepositoryImpl(private val orderService: OrderService) : OrderRepository {
+
     override suspend fun createOrder(
-        user : String,
+        tokenType : String,
+        token : String,
         createOrderRequest: CreateOrderRequest,
         result: (UiState<CreateOrderResponse>) -> Unit
     ) {
         result.invoke(UiState.Loading)
         try {
             //user == user token
-            val response = orderService.createOrder(user,createOrderRequest)
-            if (!response.isSuccessful && response.code() != CREATED) {
+            val response = orderService.createOrder("$tokenType $token",createOrderRequest)
+            if (response.code() != CREATED) {
                 result.invoke(UiState.Failure("${response.code()} : ${response.body()}"))
                 return
             }

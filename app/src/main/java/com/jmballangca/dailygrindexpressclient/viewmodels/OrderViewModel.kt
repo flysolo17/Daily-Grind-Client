@@ -14,17 +14,15 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class OrderViewModel @Inject constructor(private val authRepository: AuthRepository,private val orderRepository: OrderRepository) : ViewModel() {
+class OrderViewModel @Inject constructor(private val orderRepository: OrderRepository) : ViewModel() {
     private val createOrder = MutableLiveData<UiState<CreateOrderResponse>>()
     val order : LiveData<UiState<CreateOrderResponse>>
         get() = createOrder
 
-    fun createOrder(createOrderRequest: CreateOrderRequest) {
+    fun createOrder(tokenType : String,token : String,createOrderRequest: CreateOrderRequest) {
         viewModelScope.launch {
-            if (authRepository.getUser() != null) {
-                orderRepository.createOrder(authRepository.getUser()!!,createOrderRequest) {
-                    createOrder.value = it
-                }
+            orderRepository.createOrder(tokenType,token,createOrderRequest) {
+                createOrder.value = it
             }
         }
     }

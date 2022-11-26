@@ -6,8 +6,8 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-import com.jmballangca.dailygrindexpressclient.views.tabs.ActiveFragment
-import com.jmballangca.dailygrindexpressclient.views.tabs.CompletedFragment
+import com.jmballangca.dailygrindexpressclient.views.navbar.order.tabs.ActiveFragment
+import com.jmballangca.dailygrindexpressclient.views.navbar.order.tabs.CompletedFragment
 
 class TabAdapter(
     @NonNull fragmentManager: FragmentManager?,

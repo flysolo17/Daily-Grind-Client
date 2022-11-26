@@ -1,10 +1,8 @@
 package com.jmballangca.dailygrindexpressclient.repository.auth
 
-import com.jmballangca.dailygrindexpressclient.data.response.CheckOtpResponse
-import com.jmballangca.dailygrindexpressclient.data.response.CheckPhoneNumberResponse
 import com.jmballangca.dailygrindexpressclient.data.request.CustomerRegistrationRequest
-import com.jmballangca.dailygrindexpressclient.data.response.CustomerRegistrationResponse
-import com.jmballangca.dailygrindexpressclient.data.response.LoginResponse
+import com.jmballangca.dailygrindexpressclient.data.response.*
+import com.jmballangca.dailygrindexpressclient.models.User
 import com.jmballangca.dailygrindexpressclient.utils.UiState
 
 interface AuthRepository {
@@ -16,8 +14,10 @@ interface AuthRepository {
 
     suspend fun login(phone : String, password : String, result: (UiState<LoginResponse>) -> Unit)
 
-    suspend fun setUser(token : String)
-    suspend fun getUser() : String?
+    suspend fun setUser(data : LoginResponse)
+    suspend fun getUser(key : String) : String?
+
+    suspend fun userProfile(token : String,result: (UiState<User>) -> Unit)
 
     suspend fun logout()
 }

@@ -15,6 +15,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.jmballangca.dailygrindexpressclient.MainActivity
 import com.jmballangca.dailygrindexpressclient.R
 import com.jmballangca.dailygrindexpressclient.databinding.ActivityStartScreenBinding
+import com.jmballangca.dailygrindexpressclient.utils.TOKEN
 import com.jmballangca.dailygrindexpressclient.viewmodels.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -52,10 +53,15 @@ class StartScreenActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        val currentUser = authViewModel.getCurrentUser()
+        val currentUser = authViewModel.getCurrentUser(TOKEN)
         if (currentUser != null) {
             startActivity(Intent(this,MainActivity::class.java))
         }
+    }
+
+    override fun onNavigateUp(): Boolean {
+
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
 }

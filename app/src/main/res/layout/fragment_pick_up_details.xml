@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".views.navbar.order.createorder.PickUpDetailsFragment">
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:background="@drawable/gold_bg"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="18dp"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="50dp">
+        <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/circle"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            android:backgroundTint="#C2B5B7"
+            android:background="@color/purple_500"
+            android:layout_gravity="center"/>
+        <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:backgroundTint="#C2B5B7"
+            android:background="@drawable/circle"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            android:backgroundTint="#C2B5B7"
+            android:background="@color/purple_500"
+            android:layout_gravity="center"/>
+        <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:backgroundTint="#C2B5B7"
+            android:background="@drawable/circle"/>
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Set Pick up Details"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:layout_margin="2dp"/>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                android:layout_margin="10dp"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:src="@drawable/ic_routes"/>
+                        <TextView
+                            android:id="@+id/textAddress"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/_12_d_florencie_s1_caloocan_city"
+                            android:padding="5dp"
+                            android:textSize="12sp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/poppins"
+                            android:textColor="@color/black"/>
+                        <ImageButton
+                            android:layout_width="24dp"
+                            android:layout_margin="5dp"
+                            android:layout_height="24dp"
+                            android:backgroundTint="?attr/colorPrimary"
+                            android:background="@drawable/ic_group_60__1_"/>
+                    </LinearLayout>
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginVertical="10dp"
+                        android:orientation="vertical">
+                        <EditText
+                            android:id="@+id/inputPickUpPerson"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/pick_up_person"
+                            android:drawableStart="@drawable/ic_person"/>
+                        <EditText
+                            android:id="@+id/inputPhoneNumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/contact_number"
+                            android:inputType="number"
+                            android:drawableStart="@drawable/ic_call"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="10dp"
+                app:cardCornerRadius="10dp"
+                android:layout_margin="10dp">
+                <EditText
+                    android:id="@+id/textComment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/comment"
+                    android:layout_margin="15dp"
+                    />
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:layout_weight="1"
+        android:id="@+id/buttonNext"
+        app:cornerRadius="20dp"
+        android:layout_margin="15dp"
+        android:drawableTint="@color/white"
+        android:layout_gravity="bottom"
+        android:text="@string/next" />
+
+</FrameLayout>

@@ -3,22 +3,46 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/drawable/bg_voucher.xml" value="0.3635" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/drawable/circle.xml" value="0.194" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/drawable/gold_bg.xml" value="0.194" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/drawable/ic_arrow_btn.xml" value="0.194" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/drawable/ic_button_bg.xml" value="0.194" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/drawable/ic_getstarted.xml" value="0.3395" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/drawable/ic_group_60__1_.xml" value="0.3635" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/drawable/ic_input_bg.xml" value="0.194" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/drawable/ic_orders.xml" value="0.194" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/drawable/ic_otp_view__bg.xml" value="0.194" />
         <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/drawable/ic_password.xml" value="0.256" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/drawable/ic_person.xml" value="0.194" />
         <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/drawable/ic_phone.xml" value="0.176" />
         <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/drawable/ic_rectangle_15.xml" value="0.3325" />
         <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/drawable/ic_rider.xml" value="0.3615" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/drawable/ic_routes.xml" value="0.194" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/drawable/ic_support.xml" value="0.194" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/drawable/ic_user.xml" value="0.194" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/drawable/ic_verification_button_bg.xml" value="0.194" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/drawable/ic_vouchers.xml" value="0.194" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/drawable/voucher.xml" value="0.1595" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/drawable/voucher_bg.xml" value="0.228" />
         <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/activity_login.xml" value="0.3819918144611187" />
         <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/activity_main.xml" value="0.35280797101449274" />
         <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/activity_sign_up.xml" value="0.1703125" />
         <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/activity_start_screen.xml" value="0.36041666666666666" />
         <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/app_bar_main.xml" value="0.3614583333333333" />
         <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/content_main.xml" value="0.3614583333333333" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/drop_off_details.xml" value="0.17119565217391305" />
         <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/fragment_account_info.xml" value="0.33" />
-        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/fragment_active.xml" value="0.3625" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/fragment_active.xml" value="0.152" />
         <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/fragment_completed.xml" value="0.3625" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/fragment_create_order_stepper.xml" value="0.136" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/fragment_drop_off_details.xml" value="0.17119565217391305" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/fragment_get_started_bottom_dialog.xml" value="0.22" />
         <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/fragment_help_center.xml" value="0.3625" />
         <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/fragment_login.xml" value="0.36666666666666664" />
-        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/fragment_order.xml" value="0.30615384615384617" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/fragment_order.xml" value="0.273224043715847" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/fragment_package_details.xml" value="0.536" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/fragment_pick_up_details.xml" value="0.16799999999999998" />
         <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/fragment_registration.xml" value="0.36666666666666664" />
         <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/fragment_sign_up.xml" value="0.35260416666666666" />
         <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/fragment_verification.xml" value="0.33" />
@@ -27,6 +51,8 @@
         <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/main_tabs.xml" value="0.3625" />
         <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/nav_footer.xml" value="0.3625" />
         <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/nav_header.xml" value="0.3625" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/package_details.xml" value="0.536" />
+        <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/layout/pick_up_details.xml" value="0.2" />
         <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/menu/main.xml" value="0.5" />
         <entry key="..\:/Android/Daily Grind Project/DailyGrindExpressClient/app/src/main/res/menu/menu_nav.xml" value="0.3625" />
       </map>

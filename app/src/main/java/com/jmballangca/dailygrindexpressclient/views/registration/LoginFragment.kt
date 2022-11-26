@@ -46,7 +46,7 @@ class LoginFragment : Fragment() {
                     Toast.makeText(view.context,state.message,5000).show()
                 }
                 is UiState.Success -> {
-                    authViewModel.saveUser(state.data.data.access_token)
+                    authViewModel.saveUser(state.data)
                     progressDialog.stopLoading()
                     Toast.makeText(view.context,"Successfully logged in!",5000).show()
                     startActivity(Intent(activity, MainActivity::class.java))

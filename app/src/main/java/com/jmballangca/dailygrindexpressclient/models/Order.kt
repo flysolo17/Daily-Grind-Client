@@ -1,6 +1,6 @@
-package com.jmballangca.dailygrindexpressclient.data.response
+package com.jmballangca.dailygrindexpressclient.models
 
-data class OrderData(
+data class Order(
     val driver: String,
     val location: String,
     val phone_number: String,

@@ -1,7 +1,7 @@
-package com.jmballangca.dailygrindexpressclient.data.response
+package com.jmballangca.dailygrindexpressclient.models
 
 data class User(
-    val avatar: Any,
+    val avatar: List<Avatar>,
     val created_at: String,
     val email: String,
     val full_name: String,

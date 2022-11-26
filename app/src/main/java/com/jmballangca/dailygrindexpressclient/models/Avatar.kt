@@ -1,4 +1,4 @@
-package com.jmballangca.dailygrindexpressclient.data.response
+package com.jmballangca.dailygrindexpressclient.models
 
 data class Avatar(
     val collection_name: String,

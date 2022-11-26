@@ -1,4 +1,4 @@
-package com.jmballangca.dailygrindexpressclient.views.navbar
+package com.jmballangca.dailygrindexpressclient.views.navbar.order
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,15 +8,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
-import com.jmballangca.dailygrindexpressclient.views.adapter.TabAdapter
 import com.jmballangca.dailygrindexpressclient.databinding.FragmentOrderBinding
+import com.jmballangca.dailygrindexpressclient.views.adapter.TabAdapter
+
 import com.jmballangca.dailygrindexpressclient.viewmodels.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class OrderFragment : Fragment() {
-    private lateinit var binding : FragmentOrderBinding
+    private lateinit var binding : com.jmballangca.dailygrindexpressclient.databinding.FragmentOrderBinding
     private val authViewModel: AuthViewModel by viewModels()
 
     override fun onCreateView(
