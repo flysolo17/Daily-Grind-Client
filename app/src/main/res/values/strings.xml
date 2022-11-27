@@ -31,4 +31,5 @@
     <string name="online_payment">Online Payment</string>
     <string name="enter_voucher">Enter Voucher</string>
     <string name="add">Add</string>
+    <string name="no_address">No Address</string>
 </resources>

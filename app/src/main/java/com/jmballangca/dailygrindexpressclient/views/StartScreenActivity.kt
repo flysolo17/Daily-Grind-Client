@@ -60,7 +60,6 @@ class StartScreenActivity : AppCompatActivity() {
     }
 
     override fun onNavigateUp(): Boolean {
-
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 

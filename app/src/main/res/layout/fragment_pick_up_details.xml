@@ -83,19 +83,20 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
                             android:src="@drawable/ic_routes"/>
                         <TextView
+
                             android:id="@+id/textAddress"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="@string/_12_d_florencie_s1_caloocan_city"
+                            android:text="@string/no_address"
                             android:padding="5dp"
                             android:textSize="12sp"
                             android:layout_weight="1"
                             android:fontFamily="@font/poppins"
                             android:textColor="@color/black"/>
                         <ImageButton
+                            android:id="@+id/buttonGetLocation"
                             android:layout_width="24dp"
                             android:layout_margin="5dp"
                             android:layout_height="24dp"
@@ -126,12 +127,8 @@
                             android:drawableStart="@drawable/ic_call"/>
 
                     </LinearLayout>
-
-
                 </LinearLayout>
-
             </com.google.android.material.card.MaterialCardView>
-
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -143,8 +140,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/comment"
-                    android:layout_margin="15dp"
-                    />
+                    android:layout_margin="15dp" />
             </com.google.android.material.card.MaterialCardView>
 
 

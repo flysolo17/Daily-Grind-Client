@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="@drawable/bottom_sheet_bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/get_started"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="bottom">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Welcome"
+                android:gravity="center"
+                android:layout_margin="5dp"
+                android:textSize="22sp"
+                android:id="@+id/textFullName"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/purple_500"
+                />
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cornerRadius="30dp"
+                android:id="@+id/buttonGetStarted"
+
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:fontFamily="@font/poppins"
+                android:text="Get Started"/>
+        </LinearLayout>
+
+    </FrameLayout>
+</LinearLayout>

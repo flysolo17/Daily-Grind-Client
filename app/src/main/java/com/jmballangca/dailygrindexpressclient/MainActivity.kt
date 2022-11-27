@@ -2,12 +2,10 @@ package com.jmballangca.dailygrindexpressclient
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.activity.viewModels
 import androidx.annotation.ColorRes
 import androidx.navigation.findNavController
@@ -67,6 +65,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 is UiState.Success -> {
                     progressDialog.stopLoading()
+                    showBottomDialog(it.data.full_name)
                     displayHeaderViews(it.data)
                 }
             }
@@ -113,6 +112,15 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
-
+    private fun showBottomDialog(fullname : String) {
+        val bottomDialog = BottomSheetDialog(this, R.style.BottomsheetDialogStyle)
+        val view : View = LayoutInflater.from(this).inflate(R.layout.bottom_sheet_welcome,binding.root,false)
+        view.findViewById<TextView>(R.id.textFullName).text = "Welcome, $fullname"
+        view.findViewById<MaterialButton>(R.id.buttonGetStarted).setOnClickListener {
+            bottomDialog.dismiss()
+        }
+        bottomDialog.setContentView(view)
+        bottomDialog.show()
+    }
 
 }

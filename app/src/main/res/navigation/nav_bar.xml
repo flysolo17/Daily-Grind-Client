@@ -35,26 +35,40 @@
     <fragment
         android:id="@+id/pickUpDetailsFragment"
         android:name="com.jmballangca.dailygrindexpressclient.views.navbar.order.createorder.PickUpDetailsFragment"
-        android:label="fragment_pick_up_details"
+        android:label=""
         tools:layout="@layout/fragment_pick_up_details" >
+
+        <action
+            android:id="@+id/action_pickUpDetailsFragment_to_locationFragment"
+            app:destination="@id/locationFragment" />
         <action
             android:id="@+id/action_pickUpDetailsFragment_to_dropOffDetailsFragment"
+            app:destination="@id/dropOffDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/packageDetailsFragment"
+        android:name="com.jmballangca.dailygrindexpressclient.views.navbar.order.createorder.PackageDetailsFragment"
+        android:label=""
+        tools:layout="@layout/fragment_package_details" />
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="com.jmballangca.dailygrindexpressclient.views.navbar.order.createorder.LocationFragment"
+        android:label=""
+        tools:layout="@layout/fragment_location" >
+        <action
+            android:id="@+id/action_locationFragment_to_dropOffDetailsFragment"
             app:destination="@id/dropOffDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/dropOffDetailsFragment"
         android:name="com.jmballangca.dailygrindexpressclient.views.navbar.order.createorder.DropOffDetailsFragment"
-        android:label="fragment_drop_off_details"
+        android:label=""
         tools:layout="@layout/fragment_drop_off_details" >
         <action
             android:id="@+id/action_dropOffDetailsFragment_to_packageDetailsFragment"
             app:destination="@id/packageDetailsFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/packageDetailsFragment"
-        android:name="com.jmballangca.dailygrindexpressclient.views.navbar.order.createorder.PackageDetailsFragment"
-        android:label="fragment_package_details"
-        tools:layout="@layout/fragment_package_details" />
 
 
 </navigation>
