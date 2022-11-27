@@ -1,5 +1,8 @@
 package com.jmballangca.dailygrindexpressclient.utils
 
+import android.app.Activity
+import android.content.Context
+import android.location.LocationManager
 import java.util.regex.Pattern
 
 const val PREFERENCE_KEY = "user"
@@ -23,4 +26,6 @@ val EMAIL_ADDRESS_PATTERN: Pattern = Pattern.compile(
             "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
             ")+"
 )
+
+
 
